@@ -17,6 +17,18 @@ The similarity search is previously done using the blastX command line applicati
 $ blastx -db swiss -query Trinity.fasta -out annotation.txt -evalue 0.000001 -outfmt 6 -max_target_seqs 1
 To launch from the command line: $ python parseannotation.py <annotation.txt> <Trinity.fasta>
 
+parseDrerioannotation.py
+
+The custom database can be downloaded directly from the uniprot website. Set filters of interest in the search and download the results.
+Two files are required:
+1) the sequences (download>fasta (canonical) > D.Rerio.fasta
+2) the table of the attributes associated to the sequences containing: Entry,Entry name,Protein names,Gene ontology (biological process). Choose these four attributes in the results output formatting, then download with download>tab separated > Drerio_features.txt
+Then blast filtered sequences in Assembly_filtered.fasta against the custom DB. 
+$ blastx -subject <DRerio.fasta> -query <Assembly_Filtered.fasta> -out <annotationDR.txt> -evalue 0.000001 -outfmt 6 -max_target_seqs 1
+Retrieve GO terms associated to the matches using:
+$ python parseDrerioannotation.py <annotationDR.txt> <Drerio_features.txt>
+This will produce GOs.R, ready to be used in DGEA in R.
+
 tran2gene.py
 
 Reformats the output of Kallisto by calculating the sum of the estimated counts per gene (Kallisto provides the estimated counts per each transcript).
