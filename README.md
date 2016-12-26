@@ -41,4 +41,8 @@ Contains the voomWithQualityWeightsMOD and the voomMod function used during the 
 The voomMod function was modified from the voom code by Julien Roux, and performs the normalization to cpm using the function from the edgeR package.
 The voomWithQualityWeightsMOD calls the voomMod function.
 
+getLength.py
 
+Called as: 
+$ python getLength.py Assembly_Filtered.fasta
+allows to calculate the length of each transcript and is used for the GO enrichment analysis. 
